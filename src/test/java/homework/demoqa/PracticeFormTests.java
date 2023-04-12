@@ -1,3 +1,5 @@
+package homework.demoqa;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -41,6 +43,7 @@ public class PracticeFormTests extends TestBase {
         $("#subjectsInput").pressEnter();
         $("#hobbiesWrapper").$(byText(hobby)).click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/img.png"));
+        //$("#uploadPicture").uploadFromClasspath("img.png");
         $("#currentAddress").setValue(address);
         $("#state").click();
         $(byText(state)).click();

@@ -1,19 +1,22 @@
 plugins {
-    id 'java-library'
+    id 'java-library' //значит, что используем язык java
 }
 
+//откуда выкачиваем зависимости https://mvnrepository.com/
 repositories {
     mavenCentral()
 }
 
+//зависимости
 dependencies {
     testImplementation(
             "com.codeborne:selenide:6.12.4",
             "org.junit.jupiter:junit-jupiter:5.9.2",
-            "org.slf4j:slf4j-simple:2.0.7"
+            "org.slf4j:slf4j-simple:2.0.7" //логгер
     )
 }
 
+//говорим о том, что тесты будут запускаться с помощью junit5
 test {
     useJUnitPlatform()
 }
