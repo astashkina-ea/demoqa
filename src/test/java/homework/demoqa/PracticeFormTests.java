@@ -50,7 +50,6 @@ public class PracticeFormTests extends TestBase {
         $("#city").click();
         $(byText(city)).click();
         $("#submit").click();
-
         $(".table-responsive").shouldHave(
                 text(firstName),
                 text(lastName),
