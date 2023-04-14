@@ -1,4 +1,4 @@
-package lesson.examples;
+package examples;
 
 import org.openqa.selenium.By;
 

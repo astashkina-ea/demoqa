@@ -1,0 +1,12 @@
+hw 1
+Разработайте один автотест на проверку формы https://demoqa.com/automation-practice-form
+Необходимо заполнить все поля формы (input, textarea, загрузка картинки и тд), а не только обязательные.
+
+hw 2
+Возьмите ваш код написанный в рамках ДЗ для формы https://demoqa.com/automation-practice-form
+Добавьте в ваш код PageObjects / Components, в тестовом классе не должно остаться локаторов
+Добавьте PageObjects к автотесту на TextBoxTests
+
+hw 3
+Возьмите ваш код написанный в рамках ДЗ #7 для формы https://demoqa.com/automation-practice-form (c PageObjects)
+Вынесите все вводимые и проверяемые значения в переменные, добавьте генерацию данных с Faker
