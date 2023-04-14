@@ -5,23 +5,25 @@ import demoqa.utils.RandomUtils;
 
 import java.util.Locale;
 
+import static demoqa.utils.RandomUtils.*;
+
 public class ValuesRegistrationsPageAndModal {
 
     private static Faker faker = new Faker(new Locale("ru"));
 
     public static String
-            nameValue = RandomUtils.getRandomFirstName(),
-            lastNameValue = RandomUtils.getRandomLastName(),
-            emailValue = RandomUtils.getRandomEmail(),
-            genderValue = RandomUtils.getRandomGender(),
-            numberValue = RandomUtils.getRandomPhone(),
-            monthValue = RandomUtils.getRandomMonth(),
-            yearValue = RandomUtils.getRandomYear(),
-            dayValue = RandomUtils.getRandomDay(),
-            subjectValue = RandomUtils.getRandomSubject(),
-            hobbyValue = RandomUtils.getRandomHobby(),
+            nameValue = getRandomFirstName(),
+            lastNameValue = getRandomLastName(),
+            emailValue = getRandomEmail(),
+            genderValue = getRandomGender(),
+            numberValue = getRandomPhone(),
+            monthValue = getRandomMonth(),
+            yearValue = getRandomYear(),
+            dayValue = getRandomDay(),
+            subjectValue = getRandomSubject(),
+            hobbyValue = getRandomHobby(),
             pathValue = "img.png",
-            addressValue = RandomUtils.getRandomAddress(),
-            stateValue = RandomUtils.getRandomState(),
-            cityValue = RandomUtils.getRandomCity(stateValue);
+            addressValue = getRandomAddress(),
+            stateValue = getRandomState(),
+            cityValue = getRandomCity(stateValue);
 }

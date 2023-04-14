@@ -16,23 +16,29 @@ public class RandomUtils {
     private static String[] hobby = {
             "Sports", "Reading", "Music"
     };
+
     private static String[] state = {
             "NCR", "Uttar Pradesh", "Haryana", "Rajasthan"
     };
+
     private static String[] subject = {
             "Hindi", "English", "Maths", "Physics", "Chemistry", "Biology",
             "Biology", "Computer Science", "Commerce", "Accounting", "Economics",
             "Arts", "Social Studies", "History", "Civics"
     };
+
     public static String[] cityNCR = new String[]{
             "Delhi", "Gurgaon", "Noida"
     };
+
     public static String[] cityUttarPradesh = new String[]{
             "Agra", "Lucknow", "Merrut"
     };
+
     public static String[] cityHaryana = new String[]{
             "Karnal", "Panipat"
     };
+
     public static String[] cityRajasthan = new String[]{
             "Jaipur", "Jaiselmer"
     };
