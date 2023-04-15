@@ -1,6 +1,7 @@
 package demoqa.tests;
 
 import demoqa.data.FieldsTextBoxOutput;
+import demoqa.pages.TextBoxPage;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -10,6 +11,7 @@ import static demoqa.data.ValuesTextBoxPage.*;
 
 public class TextBoxTests extends TestBase {
 
+    TextBoxPage textBoxPage = new TextBoxPage();
     @Test
     void successfulFillFormTest() {
         textBoxPage.openPage()

@@ -1,7 +1,6 @@
 package demoqa.tests;
 
-import demoqa.data.FieldsRegistrationsModal;
-import demoqa.data.ValuesRegistrationsPageAndModal;
+import demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 import static demoqa.data.FieldsRegistrationsModal.*;
@@ -9,9 +8,12 @@ import static demoqa.data.ValuesRegistrationsPageAndModal.*;
 
 public class RegistrationsTests extends TestBase {
 
+    RegistrationPage registrationPage = new RegistrationPage();
+
     @Test
     void successfulTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName(nameValue)
                 .setLastName(lastNameValue)
                 .setUserEmail(emailValue)
