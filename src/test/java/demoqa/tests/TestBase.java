@@ -1,12 +1,9 @@
 package demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
-import demoqa.pages.RegistrationPage;
-import demoqa.pages.TextBoxPage;
 import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
-
 
     @BeforeAll
     static void beforeAll() {
@@ -15,5 +12,6 @@ public class TestBase {
         //Configuration.browser = "chrome";
         //Configuration.timeout = 10000;
         //Configuration.holdBrowserOpen = true;
+        Configuration.pageLoadTimeout = 90000;
     }
 }

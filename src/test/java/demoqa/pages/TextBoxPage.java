@@ -8,6 +8,11 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxPage {
 
+    public String nameField = "Name:",
+            emailField = "Email:",
+            currentAddressField = "Current Address :",
+            permananetAddressField = "Permananet Address :";
+
     private SelenideElement userName = $("#userName"),
             userEmail = $("#userEmail"),
             currentAddress = $("#currentAddress"),

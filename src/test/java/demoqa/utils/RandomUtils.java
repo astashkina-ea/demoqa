@@ -1,47 +1,105 @@
 package demoqa.utils;
 
 import com.github.javafaker.Faker;
+import demoqa.data.enums.*;
+import demoqa.data.enums.cities.CitiesHaryanaEnum;
+import demoqa.data.enums.cities.CitiesNCREnum;
+import demoqa.data.enums.cities.CitiesRajasthanEnum;
+import demoqa.data.enums.cities.CitiesUttarProdeshEnum;
 
+import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
 
-    private static String[] genders = {"Male", "Female", "Other"};
+    private static Faker fakerRu = new Faker(new Locale("ru"));
+    private static Faker fakerEn = new Faker(new Locale("en"));
 
-    private static String[] months = {
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-    };
+    public static int getRandomInt(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
 
-    private static String[] hobby = {
-            "Sports", "Reading", "Music"
-    };
+    public static <T extends Enum<?>> T getRandomEnum(Class<T> enumClass) {
+        int index = getRandomInt(0,enumClass.getEnumConstants().length - 1);
+        return enumClass.getEnumConstants()[index];
+    }
 
-    private static String[] state = {
-            "NCR", "Uttar Pradesh", "Haryana", "Rajasthan"
-    };
+    public static String getRandomFirstName() {
+        return fakerRu.name().firstName();
+    }
 
-    private static String[] subject = {
-            "Hindi", "English", "Maths", "Physics", "Chemistry", "Biology",
-            "Biology", "Computer Science", "Commerce", "Accounting", "Economics",
-            "Arts", "Social Studies", "History", "Civics"
-    };
+    public static String getRandomLastName() {
+        return fakerRu.name().lastName();
+    }
 
-    public static String[] cityNCR = new String[]{
-            "Delhi", "Gurgaon", "Noida"
-    };
+    public static String getRandomEmail() {
+        return fakerEn.internet().emailAddress();
+    }
 
-    public static String[] cityUttarPradesh = new String[]{
-            "Agra", "Lucknow", "Merrut"
-    };
+    public static String getRandomGender() {
+        return getRandomEnum(GendersEnum.class).getName();
+    }
 
-    public static String[] cityHaryana = new String[]{
-            "Karnal", "Panipat"
-    };
+    public static String getRandomPhone() {
+        return fakerRu.numerify("##########");
+    }
 
-    public static String[] cityRajasthan = new String[]{
-            "Jaipur", "Jaiselmer"
-    };
+    public static String getRandomMonth() {
+        return getRandomEnum(MonthsEnum.class).getName();
+    }
+
+    public static String getRandomYear() {
+        return Integer.toString(getRandomInt(1900, 2100));
+    }
+
+    public static String getRandomDay() {
+        int day = getRandomInt(1, 28);
+        if (day < 10) {
+            return "0" + Integer.toString(day);
+        } else {
+            return Integer.toString(day);
+        }
+    }
+
+    public static String getRandomSubject() {
+        return getRandomEnum(SubjectsEnum.class).getName();
+    }
+
+    public static String getRandomHobby() {
+        return getRandomEnum(HobbiesEnum.class).getName();
+    }
+
+    public static String getRandomAddress() {
+        return fakerEn.address().fullAddress();
+    }
+
+    public static String getRandomState() {
+        return getRandomEnum(StatesEnum.class).getName();
+    }
+
+    public static String getRandomCity(String state) {
+        String city;
+        switch (state) {
+            case "NCR": {
+                city = getRandomEnum(CitiesNCREnum.class).getName();
+                return city;
+            }
+            case "Uttar Pradesh": {
+                city = getRandomEnum(CitiesUttarProdeshEnum.class).getName();
+                return city;
+            }
+            case "Haryana": {
+                city = getRandomEnum(CitiesHaryanaEnum.class).getName();
+                return city;
+            }
+            case "Rajasthan": {
+                city = getRandomEnum(CitiesRajasthanEnum.class).getName();
+                return city;
+            }
+        }
+        return null;
+    }
+}
 
 //    public static String getRandomUuid() {
 //        String uuid = UUID.randomUUID().toString();
@@ -63,10 +121,6 @@ public class RandomUtils {
 //        return getRandomString(10) + "@qa.guru";
 //    }
 
-    public static int getRandomInt(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-
 //    public static String getRandomPhone() {
 //        return "+5 (9" + getRandomInt(11, 99) + ") " + getRandomInt(1111, 9999) + " - " + getRandomInt(111, 999);
 //    }
@@ -75,84 +129,7 @@ public class RandomUtils {
 //        return null; // todo realise
 //    }
 
-    private static String getRandomItemFromArray(String[] values) {
-        int index = getRandomInt(0, values.length - 1);
-        return values[index];
-    }
-
-    public static String getRandomFirstName() {
-        return new Faker().name().firstName();
-    }
-
-    public static String getRandomLastName() {
-        return new Faker().name().lastName();
-    }
-
-    public static String getRandomEmail() {
-        return new Faker().internet().emailAddress("en");
-    }
-
-    public static String getRandomGender() {
-        return getRandomItemFromArray(genders);
-    }
-
-    public static String getRandomPhone() {
-        return new Faker().numerify("##########");
-    }
-
-    public static String getRandomMonth() {
-        return getRandomItemFromArray(months);
-    }
-
-    public static String getRandomYear() {
-        return Integer.toString(getRandomInt(1900, 2100));
-    }
-
-    public static String getRandomDay() {
-        int day = getRandomInt(1, 28);
-        if (day < 10) {
-            return "0" + Integer.toString(day);
-        } else {
-            return Integer.toString(day);
-        }
-    }
-
-    public static String getRandomSubject() {
-        return getRandomItemFromArray(subject);
-    }
-
-    public static String getRandomHobby() {
-        return getRandomItemFromArray(hobby);
-    }
-
-    public static String getRandomAddress() {
-        return new Faker().address().fullAddress();
-    }
-
-    public static String getRandomState() {
-        return getRandomItemFromArray(state);
-    }
-
-    public static String getRandomCity(String state) {
-        String city;
-        switch (state) {
-            case "NCR": {
-                city = getRandomItemFromArray(cityNCR);
-                return city;
-            }
-            case "Uttar Pradesh": {
-                city = getRandomItemFromArray(cityUttarPradesh);
-                return city;
-            }
-            case "Haryana": {
-                city = getRandomItemFromArray(cityHaryana);
-                return city;
-            }
-            case "Rajasthan": {
-                city = getRandomItemFromArray(cityRajasthan);
-                return city;
-            }
-        }
-        return null;
-    }
-}
+//    private static String getRandomItemFromArray(String[] values) {
+//        int index = getRandomInt(0, values.length - 1);
+//        return values[index];
+//    }

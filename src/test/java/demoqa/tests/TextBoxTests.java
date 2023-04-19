@@ -1,27 +1,26 @@
 package demoqa.tests;
 
-import demoqa.data.FieldsTextBoxOutput;
+import demoqa.data.viewModel.TextBoxViewModel;
 import demoqa.pages.TextBoxPage;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static demoqa.data.FieldsTextBoxOutput.*;
-import static demoqa.data.ValuesTextBoxPage.*;
 
 public class TextBoxTests extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
+    TextBoxViewModel textBoxViewModel = new TextBoxViewModel();
+
     @Test
     void successfulFillFormTest() {
         textBoxPage.openPage()
-                .setUserName(nameValue + " " + lastNameValue)
-                .setUserEmail(emailValue)
-                .setCurrentAddress(currentAddressValue)
-                .setPermanentAddress(permanentAddressValue)
-                .pressSubmit()
-                .verifyResult(nameField, nameValue + " " + lastNameValue).verifyResult(emailField, emailValue)
-                .verifyResult(currentAddressField, currentAddressValue)
-                .verifyResult(permananetAddressField, permanentAddressValue);
+                .setUserName(textBoxViewModel.nameValue + " " + textBoxViewModel.lastNameValue)
+                .setUserEmail(textBoxViewModel.emailValue)
+                .setCurrentAddress(textBoxViewModel.currentAddressValue)
+                .setPermanentAddress(textBoxViewModel.permanentAddressValue)
+                .pressSubmit();
+
+        textBoxPage.verifyResult(textBoxPage.nameField, textBoxViewModel.nameValue + " " + textBoxViewModel.lastNameValue)
+                .verifyResult(textBoxPage.emailField, textBoxViewModel.emailValue)
+                .verifyResult(textBoxPage.currentAddressField, textBoxViewModel.currentAddressValue)
+                .verifyResult(textBoxPage.permananetAddressField, textBoxViewModel.permanentAddressValue);
     }
 }

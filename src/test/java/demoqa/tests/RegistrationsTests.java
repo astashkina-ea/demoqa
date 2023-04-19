@@ -1,42 +1,33 @@
 package demoqa.tests;
 
-import demoqa.pages.RegistrationPage;
+import demoqa.data.viewModel.RegistrationFormViewModel;
+import demoqa.pages.RegistrationFormPage;
 import org.junit.jupiter.api.Test;
-
-import static demoqa.data.FieldsRegistrationsModal.*;
-import static demoqa.data.ValuesRegistrationsPageAndModal.*;
 
 public class RegistrationsTests extends TestBase {
 
-    RegistrationPage registrationPage = new RegistrationPage();
+    RegistrationFormPage registrationFormPage = new RegistrationFormPage();
+    RegistrationFormViewModel registrationFormViewModel = new RegistrationFormViewModel();
 
     @Test
     void successfulTest() {
-        registrationPage.openPage()
+        registrationFormPage.openPage()
                 .removeBanner()
-                .setFirstName(nameValue)
-                .setLastName(lastNameValue)
-                .setUserEmail(emailValue)
-                .setGender(genderValue)
-                .setUserNumber(numberValue)
-                .setBirthDate(dayValue, monthValue, yearValue)
-                .setSubject(subjectValue)
-                .setHobby(hobbyValue)
-                .uploadPicture(pathValue)
-                .setAddress(addressValue)
-                .setState(stateValue)
-                .setCity(cityValue)
-                .pressSubmit()
-                .verifyRegistrationResultModalAppears()
-                .verifyResult(studentNameField, nameValue + " " + lastNameValue)
-                .verifyResult(studentEmailField, emailValue)
-                .verifyResult(genderField, genderValue)
-                .verifyResult(mobileField, numberValue)
-                .verifyResult(dateBirthField, dayValue + " " + monthValue + "," + yearValue)
-                .verifyResult(subjectsField, subjectValue)
-                .verifyResult(hobbiesField, hobbyValue)
-                .verifyResult(pictureField, pathValue)
-                .verifyResult(addressField, addressValue)
-                .verifyResult(stateCityField, stateValue + " " + cityValue);
+                .setFirstName(registrationFormViewModel.nameValue)
+                .setLastName(registrationFormViewModel.lastNameValue)
+                .setUserEmail(registrationFormViewModel.emailValue)
+                .setGender(registrationFormViewModel.genderValue)
+                .setUserNumber(registrationFormViewModel.numberValue)
+                .setBirthDate(registrationFormViewModel.dayValue, registrationFormViewModel.monthValue, registrationFormViewModel.yearValue)
+                .setSubject(registrationFormViewModel.subjectValue)
+                .setHobbiesWrapper(registrationFormViewModel.hobbyValue)
+                .uploadPicture(registrationFormViewModel.pathValue)
+                .setAddress(registrationFormViewModel.addressValue)
+                .setState(registrationFormViewModel.stateValue)
+                .setCity(registrationFormViewModel.cityValue)
+                .pressSubmit();
+
+        registrationFormPage.verifyRegistrationResultModalAppears()
+                .verifyResult(registrationFormViewModel);
     }
 }
