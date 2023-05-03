@@ -2,7 +2,6 @@ package com.demoqa.utils;
 
 import com.demoqa.data.enums.*;
 import com.github.javafaker.Faker;
-import com.demoqa.data.enums.*;
 import com.demoqa.data.enums.cities.CitiesHaryanaEnum;
 import com.demoqa.data.enums.cities.CitiesNCREnum;
 import com.demoqa.data.enums.cities.CitiesRajasthanEnum;
