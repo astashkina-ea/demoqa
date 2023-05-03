@@ -12,6 +12,5 @@ public class TestBase {
         //Configuration.browser = "chrome";
         //Configuration.timeout = 10000;
         //Configuration.holdBrowserOpen = true;
-        Configuration.pageLoadTimeout = 90000;
-    }
+        Configuration.pageLoadStrategy = "eager";    }
 }
