@@ -17,7 +17,27 @@ dependencies {
     )
 }
 
+//для логирования
+tasks.withType(Test) {
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
 //говорим о том, что тесты будут запускаться с помощью junit5
+//gradle test
 test {
     useJUnitPlatform()
+}
+
+//для запуска конкретных тестов (в самих тестах (перед тестом или классом) установлен тег "simple"))
+//gradle simple_test
+task simple_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("simple") //тесты с тегом которые запустится
+        excludeTags("not_simple") //тесты с тегом которые не запустятся
+    }
 }
