@@ -2,6 +2,7 @@ package com.demoqa.tests;
 
 import com.demoqa.data.viewModel.RegistrationFormViewModel;
 import com.demoqa.pages.RegistrationFormPage;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationsTests extends TestBase {
@@ -10,6 +11,7 @@ public class RegistrationsTests extends TestBase {
     RegistrationFormViewModel registrationFormViewModel = new RegistrationFormViewModel();
 
     @Test
+    @Tag("remote")
     void successfulTest() {
         registrationFormPage.openPage()
                 .removeBanner()
