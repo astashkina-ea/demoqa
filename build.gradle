@@ -1,19 +1,44 @@
 plugins {
     id 'java-library' //значит, что используем язык java
+    id 'io.qameta.allure' version '2.11.2' // https://plugins.gradle.org/plugin/io.qameta.allure
 }
+
+def allureVersion = '2.22.0',
+    junitVersion = '5.9.3',
+    selenideVersion = '6.12.4',
+    slf4jVersion = '2.0.7'
 
 //откуда выкачиваем зависимости https://mvnrepository.com/
 repositories {
     mavenCentral()
 }
 
+allure {
+    report { //секция репорта
+        version.set("${allureVersion}") // https://github.com/allure-framework/allure2
+    }
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
+        frameworks {
+            junit5 { //название фреймворка
+                adapterVersion.set("${allureVersion}") //https://github.com/allure-framework/allure-java
+            }
+        }
+    }
+
+    //для запуска тестов через Gradle -> Tasks -> verification --> test
+    useJUnit5 {
+        version = "${allureVersion}"
+    }
+}
+
 //зависимости
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:6.12.4",
+            "com.codeborne:selenide:$selenideVersion",
             "com.github.javafaker:javafaker:1.0.2",
-            "org.junit.jupiter:junit-jupiter:5.9.2",
-            "org.slf4j:slf4j-simple:2.0.7" //логгер
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion" //логгер
     )
 }
 
