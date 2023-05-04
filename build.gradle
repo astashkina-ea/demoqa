@@ -66,3 +66,9 @@ task simple_test(type: Test) {
         excludeTags("not_simple") //тесты с тегом которые не запустятся
     }
 }
+
+task remote_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("remote")
+    }
+}
