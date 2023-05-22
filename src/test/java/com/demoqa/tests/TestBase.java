@@ -15,11 +15,11 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        //Configuration.browser = "chrome";
-
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub"; // адрес селенойда, где запускаются тесты
+        Configuration. = System.getProperty("baseUrl", "https://demoqa.com");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+        Configuration.remote = System.getProperty("wdhost"); // адрес селенойда, где запускаются тесты
 
         //задаем для selenoid набор опций
         DesiredCapabilities capabilities = new DesiredCapabilities();
