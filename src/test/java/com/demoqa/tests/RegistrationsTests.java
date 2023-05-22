@@ -15,7 +15,6 @@ public class RegistrationsTests extends TestBase {
 
     @Test
     @Tag("remote")
-    @Tag("")
     @DisplayName("Успешное заполнение формы")
     void successfulTest() {
         step("Открыть форму", () -> {
