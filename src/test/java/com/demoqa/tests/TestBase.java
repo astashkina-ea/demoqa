@@ -16,10 +16,15 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        String[] browser = System.getProperty("browser", "chrome:100.0").split(":");
+        Configuration.browser = browser[0];
+        Configuration.browserVersion = browser[1];
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
-        Configuration.remote = System.getProperty("wdhost"); // адрес селенойда, где запускаются тесты
+        String selenoidUrl = System.getProperty("selenoidUrl");
+        String login = System.getProperty("login");
+        String password = System.getProperty("password");
+        Configuration.remote = String.format("https://%s:%s@%s", login, password, selenoidUrl); // адрес селенойда, где запускаются тесты
+        //gradle remote -DbaseUrl=https://demoqa.com -Dbrowser=chrome:100.0 -DbrowserSize=1920x1080 -DselenoidUrl=selenoid.autotests.cloud/wd/hub -Dlogin=user1 -Dpassword=1234
 
         //задаем для selenoid набор опций
         DesiredCapabilities capabilities = new DesiredCapabilities();
