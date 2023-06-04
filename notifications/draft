@@ -62,8 +62,8 @@ java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifica
     "enableChart": true
   },
   "telegram": {
-    "token": "6154474742:AAEFOicEBGunqwb8pAymuE86AI9G1ufFcZQ",
-    "chat": "-1001920342457",
+    "token": "token",
+    "chat": " chat_id",
     "replyTo": ""
   }
 }
