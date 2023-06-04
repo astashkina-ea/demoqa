@@ -45,7 +45,7 @@ dependencies {
 
 //для логирования
 tasks.withType(Test) {
-    systemProperties(System.getProperties()) //прокидывет значения переменных во внутрь -Daaa=bbb
+    systemProperties(System.getProperties()) //прокидывет значения переменных во внутрь -Daaa=bbb. Без нее параметры из командной строки не будут передаваться в скрипт сборки.
 
     testLogging {
         lifecycle {
