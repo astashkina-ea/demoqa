@@ -13,7 +13,7 @@
 curl -X POST \
      -H 'Content-Type: application/json' \
      -d '{"chat_id": "-1001920342457", "text": "This is a test from curl", "disable_notification": true}' \
-     https://api.telegram.org/bot6154474742:AAEFOicEBGunqwb8pAymuE86AI9G1ufFcZQ/sendMessage
+     https://api.telegram.org/bot{secret_bot}/sendMessage
 
 
 Как отправить аллюр отчет локально
