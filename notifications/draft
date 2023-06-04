@@ -37,7 +37,7 @@ cp -r /var/folders/j0/dhs8gbc157sbc6jv11hxxhq40000gn/T/17690602661332270748/allu
   },
   "telegram": {
     "token": "token",
-    "chat": " chat_id",
+    "chat": "chat_id",
     "replyTo": ""
   }
 }
@@ -63,7 +63,7 @@ java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifica
   },
   "telegram": {
     "token": "token",
-    "chat": " chat_id",
+    "chat": "chat_id",
     "replyTo": ""
   }
 }
