@@ -1,4 +1,4 @@
-Создание бота
+//Создание бота
 Находим бота в Telgram @BotFather (с галочкой)
 Отправляем команду команду /newbot
 Задаем имя
@@ -16,7 +16,7 @@ curl -X POST \
      https://api.telegram.org/bot{secret_bot}/sendMessage
 
 
-Как отправить аллюр отчет локально
+//Как отправить аллюр отчет локально
 Создадим в проекте отдельную папку notifications
 Переходим по ссылке https://github.com/qa-guru/allure-notifications и скачиваем последнюю версию библиотеки и добавим jar-файл в проект в папку notifications.
 В папке notifications создаем файл конфигурации config.json. (этот файл не добавляем в гит)
@@ -45,7 +45,7 @@ cp -r /var/folders/j0/dhs8gbc157sbc6jv11hxxhq40000gn/T/17690602661332270748/allu
 java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.2.1.jar
 После выполнения команды бот пришлет в чат сообщения с результатами тестов.
 
-Как подключить все к Jenkins
+//Как подключить все к Jenkins
 В  Jenkins в блоке "Сборка" необходимо выбрать Добавить шаг, в нем пункт Create/Update Text File (перед Invoke Gradle script)
 В File Path указываем путь к json-файлу notifications/config.json,
 в Text File Content вставляем содержимое файла config.json. Ставим галочки на Create at Workspace и Overwrite file.
@@ -71,7 +71,7 @@ java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifica
 В поле Script указываем команду для отправки сообщения и сохраняем.
 java "-DconfigFile=notifications/config.json" -jar ../allure-notifications-4.2.1.jar
 
-Как добавить расписание джобы
+//Как добавить расписание джобы
 Тригеры сборки
 Запускать периодически
 Расписание - софрмировать значение https://crontab.guru/
